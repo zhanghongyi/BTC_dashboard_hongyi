@@ -1,6 +1,10 @@
-angular.module('poll', ['ngResource']).
-    factory('Poll', function($resource) {
-        return $resource('', {}, {
-        query: { method: 'GET', params: { pollId: 'polls' }, isArray: true }
-    })
-});
+BTC_dashboard.factory('Server', ['$http', function ($http) {
+  return {
+    get: function(url) {
+      return $http.get(url);
+    },
+    post: function(url) {
+      return $http.post(url);
+    },
+  };
+}]);

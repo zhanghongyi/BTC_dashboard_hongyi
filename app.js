@@ -33,16 +33,18 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+app.get('/api', routes.api);
 
 newdata = new Object();
 
 var interval = setInterval( function() {
-	update(newdata);
+  update(newdata);
 }, 1000);
+
+
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
 
 function getDateTime() {
 
@@ -62,19 +64,17 @@ function update(newdata){
 
 	var date=getDateTime();
   newdata.time=date;
-	console.log(date);
 
   var req = https.get("https://api.bitcoinaverage.com/ticker/global/CAD/last", function(res) {
       var obj='';
-      console.log("Got response from CAD: " + res.statusCode);
+      //console.log("Got response from CAD: " + res.statusCode);
       res.setEncoding('utf8');
       res.on('data', function (chunk) {
         obj+=chunk;
-        //console.log(chunk);
     });
       res.on('end', function () {
         newdata.CAD=obj;
-        console.log(obj);
+        //console.log(obj);
     });
 	}).on('error', function(e) {
     	console.log("Got error: " + e.message);
@@ -87,23 +87,22 @@ function update(newdata){
   req.write('data\n');
 
 	https.get("https://api.bitcoinaverage.com/ticker/global/BRL/last", function(res) {
-		console.log("Got response from BRL: " + res.statusCode);
+		//console.log("Got response from BRL: " + res.statusCode);
 		res.setEncoding('utf8');
 		res.on('data', function (chunk) {
       newdata.BRL=chunk;
-      console.log(chunk);
+      //console.log(chunk);
   		});
 	}).on('error', function(e) {
   		console.log("Got error: " + e.message);	
 	});
 	//console.log(newdata);
   var jsonData = JSON.stringify(newdata, null, 4);
-  console.log("json: "+jsonData);
-  fs.writeFile('./data.json', jsonData, function (err) {
+  //console.log("json: "+jsonData);
+  fs.writeFile('data/data.json', jsonData, function (err) {
     if (err) throw err;
-    console.log('It\'s saved!');
+    console.log('Data Updated');
   });
-
 }
 
 
