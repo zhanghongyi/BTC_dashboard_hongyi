@@ -4,19 +4,18 @@ head
 	meta(charset="utf-8")
 	meta(name='viewport', content='width=device-width, initial-scale=1, user-scalable=no')
 	title=title
-	link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css')
-	link(rel='stylesheet', href='/stylesheets/style.css')
+	link(href='/stylesheets/uikit.min.css', rel='stylesheet')
+	link(href='/stylesheets/style.css', rel='stylesheet')
 	script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js')
 	script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular-resource.min.js')    
-	script(src='/javascripts/controllers.js')           
+	script(src='/javascripts/controllers.js') 
+	script(src='/javascripts/spin.min.js')            
 body
-	nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
-		div.navbar-header
-			a.navbar-brand(href='')= "Bitcoin"
-	div.container
-		div(ng-controller="BTCctrl")
-			p {{text}}
-			p DATA: {{data}}
-			p {{CAD}}
-			p {{BRL}}
-			p {{time}}
+	nav.uk-navbar
+		a.uk-navbar-brand(href="#")="BITCOIN"
+		div.uk-navbar-content.uk-navbar-flip="spinner"
+	div.container(ng-controller="BTCctrl")
+		p {{text}}
+		p CAD:	{{CAD}}
+		p BRL:	{{BRL}}
+		p Last Updated:	{{time}}

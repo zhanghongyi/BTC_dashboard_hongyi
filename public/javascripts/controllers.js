@@ -4,9 +4,9 @@ var BTC_dashboard = angular.module('BTC_dashboard', []);
  
 BTC_dashboard.controller('BTCctrl', function ($scope, $http) {
 
-  $scope.CAD = 'init';
+  $scope.CAD = '';
 
-  $scope.BRL = 'init';
+  $scope.BRL = '';
   $scope.text='Welcome to the Bitcoin world';
 
   $http({
