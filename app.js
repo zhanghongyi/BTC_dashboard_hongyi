@@ -13,7 +13,7 @@ var fs = require('fs');
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 80);
+app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.favicon());
@@ -38,7 +38,7 @@ newdata = new Object();
 
 var interval = setInterval( function() {
   update(newdata);
-}, 1000);
+}, 3000);
 
 
 http.createServer(app).listen(app.get('port'), function(){
@@ -100,7 +100,7 @@ function update(newdata){
   //console.log("json: "+jsonData);
   fs.writeFile('data/data.json', jsonData, function (err) {
     if (err) throw err;
-    //console.log('Data Updated');
+    console.log('Data Updated');
   });
 }
 
