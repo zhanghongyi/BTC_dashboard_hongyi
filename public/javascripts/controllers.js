@@ -36,9 +36,3 @@ BTC_dashboard.controller('BTCctrl', ['$scope', '$http', '$interval', '$timeout',
   }, 15000);
 
 }]);
-
-BTC_dashboard.controller('TestCtrl', ['$scope', function ($scope) {
-    
-    $scope.text = 'Hello, Angular fanatic.';
-    
-}]);

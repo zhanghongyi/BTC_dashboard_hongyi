@@ -7,6 +7,7 @@ exports.index = function(req, res){
 	res.render('index', { title: 'BTC_dashboard' });
 
 };
+
 FileData= '';
 exports.api= function(req, res){
   	fs.readFile('data/data.json', function (err, data) {
