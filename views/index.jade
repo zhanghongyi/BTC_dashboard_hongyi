@@ -16,11 +16,10 @@ body(ng-controller="BTCctrl")
 		div.container-fluid
 			div.navbar-header
 				a.navbar-brand(href="#")="BITCOIN"
-			div.collapse.navbar-collapse
-				ul.nav.navbar-nav.navbar-right
-					li(ng-show="running")
-						a
-							i.icon-spinner.icon-spin.icon-large
+			ul.nav.navbar-nav.navbar-right
+				li(ng-show="running")
+					a
+						i.icon-spinner.icon-spin.icon-large
 	div.container
 		p CAD:	{{CAD}}
 		p BRL:	{{BRL}}
