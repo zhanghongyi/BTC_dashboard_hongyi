@@ -24,12 +24,11 @@ exports.api= function(req, res) {
       });
     }, 
     time: function(callback) {
-    	callback(null, getDateTime());
+      callback(null, getDateTime());
     }
   },
   function(err, results) {
-    // results: {BRL: '', CAD: '', time: ' : : '} 
-		res.send(results);
+    res.send(results);
   });
 };
 
