@@ -13,7 +13,7 @@ Instructions
 Dependencies
 ---------------
 
-* [express](http://expressjs.com/, "Express framework")
-* [jade](http://jade-lang.com/, "Jade node template engine")
-* [request](https://github.com/mikeal/request, "Request libary")
-* [async](https://github.com/caolan/async, "make it async") 
+* [express](http://expressjs.com/ "Express framework")
+* [jade](http://jade-lang.com/ "Jade node template engine")
+* [request](https://github.com/mikeal/request "Request libary")
+* [async](https://github.com/caolan/async "make it async") 
