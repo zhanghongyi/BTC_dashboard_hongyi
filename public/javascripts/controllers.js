@@ -4,20 +4,19 @@ var BTC_dashboard = angular.module('BTC_dashboard', []);
  
 BTC_dashboard.controller('BTCctrl', ['$scope', '$http', '$interval', '$timeout', function ($scope, $http, $interval, $timeout) {
   $scope.refresh = function() {
-    $timeout(function (argument) {
+    $timeout(function () {
       $scope.running = true;
     }, 2000);
     $http({
       method: 'GET',
       url: 'http://localhost:3000/api'
     })
-    .success(function (data, status, headers, config) {
-      $scope.data = data;
+    .success(function (data) {
+      $scope.time = data.time;
       $scope.CAD = data.CAD;
       $scope.BRL = data.BRL;
-      $scope.time = data.time;
     })
-    .error(function (data, status, headers, config) {
+    .error(function (data) {
       $scope.CAD = 'Error';
       $scope.BRL = 'Error';
       $scope.time = 'Error';
