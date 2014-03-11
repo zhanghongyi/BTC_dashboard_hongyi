@@ -8,4 +8,4 @@ Instruction on Running it
 
 - Git clone
 - Install node.js and expressJS
-- npm install && node app to fire it up
+- ```npm install``` && ```node app``` to fire it up

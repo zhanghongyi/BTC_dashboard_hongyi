@@ -4,17 +4,15 @@ body {
 }
 
 div.container {
-	vertical-align: middle;
-	position: relative;
-	height: auto;
-	margin-top: 20%;
-	margin-left: auto;
-	margin-right: auto;
-	width: 80%;
-	font-family: Georgia;
-	font-size: auto;
+  vertical-align: middle;
+  position: relative;
+  height: auto;
+  margin-top: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  font-family: Georgia;
+  font-size: auto;
 }
 
-p {
-	text-align: center;
-}
+p { text-align: center; }
