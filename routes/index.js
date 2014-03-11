@@ -11,15 +11,15 @@ exports.api= function(req, res) {
   async.parallel({
     CAD: function(callback) {
       request('https://api.bitcoinaverage.com/ticker/global/CAD/last', function (error, response, body) {
-    	if (!error && response.statusCode == 200) {
-      	callback(null, body);
+        if (!error && response.statusCode == 200) {
+          callback(null, body);
         }
       });
     },
     BRL: function(callback) {
       request('https://api.bitcoinaverage.com/ticker/global/BRL/last', function (error, response, body) {
-    	if (!error && response.statusCode == 200) {
-      	callback(null, body);
+        if (!error && response.statusCode == 200) {
+          callback(null, body);
         }
       });
     }, 
