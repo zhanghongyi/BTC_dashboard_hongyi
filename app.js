@@ -1,14 +1,10 @@
 
-/**
- * Module dependencies.
- */
-
 var express = require('express');
 var routes = require('./routes');
-var http = require('http');
 var path = require('path');
-var https = require('https');
 var fs = require('fs');
+var http = require('http');
+var request = require('request');
 
 var app = express();
 
@@ -60,34 +56,17 @@ function update(newdata) {
 	var date = getDateTime();
   newdata.time = date;
 
-  var req = https.get("https://api.bitcoinaverage.com/ticker/global/CAD/last", function(res) {
-    var obj = '';
-    //console.log("Got response from CAD: " + res.statusCode);
-    res.setEncoding('utf8');
-    res.on('data', function (chunk) {
-      obj += chunk;
-    });
-    res.on('end', function () {
-      newdata.CAD = obj;
-      //console.log(obj);
-    });
-	}).on('error', function(e) {
-    console.log("Got error: " + e.message);
-	});
-  req.on('error', function(e) {
-    console.log('problem with request to CAD: ' + e.message);
+  request('https://api.bitcoinaverage.com/ticker/global/CAD/last', function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      newdata.CAD = body;
+    }
   });
 
-	https.get("https://api.bitcoinaverage.com/ticker/global/BRL/last", function(res) {
-		//console.log("Got response from BRL: " + res.statusCode);
-		res.setEncoding('utf8');
-		res.on('data', function (chunk) {
-      newdata.BRL = chunk;
-      //console.log(chunk);
-  	});
-	}).on('error', function(e) {
-  	console.log("problem with request to BRL: " + e.message);	
-	});
+	request('https://api.bitcoinaverage.com/ticker/global/BRL/last', function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      newdata.BRL = body;
+    }
+  });
 
   var jsonData = JSON.stringify(newdata, null, 2);
   //console.log("json: "+jsonData);
