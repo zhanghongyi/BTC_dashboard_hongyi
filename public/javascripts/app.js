@@ -3,6 +3,8 @@
 var BTC_dashboard = angular.module('BTC_dashboard', []);
  
 BTC_dashboard.controller('BTCctrl', ['$scope', '$http', '$interval', function ($scope, $http, $interval) {
+  
+  //call to fresh
   $scope.refresh = function() {
     $scope.running = true;
     $http({
@@ -24,9 +26,13 @@ BTC_dashboard.controller('BTCctrl', ['$scope', '$http', '$interval', function ($
   };
   $scope.refresh();
   $scope.count = 15;
+
+  //refresh every 15 secs
   $interval(function() {
     $scope.refresh();
   }, 15000);
+
+  //countdown
   $interval(function() {
     if($scope.count == 0){
       $scope.count = 15;
