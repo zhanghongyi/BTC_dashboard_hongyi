@@ -23,7 +23,15 @@ BTC_dashboard.controller('BTCctrl', ['$scope', '$http', '$interval', function ($
     })
   };
   $scope.refresh();
-  $interval(function(){
+  $scope.count = 15;
+  $interval(function() {
     $scope.refresh();
   }, 15000);
+  $interval(function() {
+    if($scope.count == 0){
+      $scope.count = 15;
+    }
+    else
+      $scope.count--;
+  }, 1000);
 }]);
