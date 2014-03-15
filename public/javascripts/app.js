@@ -9,7 +9,7 @@ BTC_dashboard.controller('BTCctrl', ['$scope', '$http', '$interval', function ($
     $scope.running = true;
     $http({
       method: 'GET',
-      url: 'http://localhost:3000/api'
+      url: '/api'
     })
     .success(function (data) {
       $scope.running = false;
